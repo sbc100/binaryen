@@ -77,8 +77,11 @@ jobs:
     - name: build
       run: cmake --build out --config Release
 
+    - name: install
+      run: cmake --install out --config Release
+
     - name: strip
-      run: find out/bin/ -type f -perm -u=x -exec strip {} +
+      run: find out/install/ -type f -perm -u=x -exec strip {} +
       if: matrix.os != 'windows-latest'
 
     - name: test
@@ -91,7 +94,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: build-${{ matrix.os }}
-        path: out/bin
+        path: out/install
 
   build-clang:
     name: clang
