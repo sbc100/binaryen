@@ -48,7 +48,7 @@ jobs:
       run: cmake --build out --config Release
 
     - name: strip
-      run: find out/bin/ -type f -perm -u=x -exec strip {} +
+      run: find out/bin/ -type f -perm -u=x -exec strip -x {} +
       if: matrix.os != 'windows-latest'
 
     - name: archive
