@@ -131,7 +131,7 @@ jobs:
         PKGNAME="binaryen-$VERSION-x86_64-linux"
         TARBALL=$PKGNAME.tar.gz
         SHASUM=$PKGNAME.tar.gz.sha256
-        ./alpine find bin/ -type f -perm -u=x -exec strip {} +
+        ./alpine.sh find bin/ -type f -perm -u=x -exec strip {} +
         mv bin binaryen-$VERSION
         tar -czf $TARBALL binaryen-$VERSION
         shasum -a 256 $TARBALL > $SHASUM
